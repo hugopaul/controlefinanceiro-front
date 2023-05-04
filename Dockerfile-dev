@@ -1,6 +1,6 @@
 FROM nginx:latest 
 RUN mkdir /usr/share/nginx/html/controlefinanceiro-dev/
-COPY dist/ /usr/share/nginx/html/controlefinanceiro-dev/
+COPY dist /usr/share/nginx/html/controlefinanceiro-dev/
 ENV TZ="America/Sao_Paulo"
 
 EXPOSE 81
