@@ -1,5 +1,5 @@
 FROM nginx:latest 
 RUN rm /usr/share/nginx/html/index.html -f 
-COPY dist/controle/ /usr/share/nginx/html/controle
+COPY dist /usr/share/nginx/html/controle
 
 EXPOSE 80
