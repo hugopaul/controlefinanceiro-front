@@ -59,7 +59,7 @@
               "namedChunks": true
             },
             "prod": {
-              "baseHref": "controle",
+              "baseHref": "/controle/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -76,7 +76,7 @@
               "buildOptimizer": true
             },
             "dev": {
-              "baseHref": "controle-dev",
+              "baseHref": "/controle-dev/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
