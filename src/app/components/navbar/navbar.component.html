@@ -1,3 +1,29 @@
-<h1>PRODDDDDDDDDDDDDDDDD</h1>
-<h1>TESTE 22</h1>
-<p class="">navbar</p>
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a routerLink="/home" class="logo">
+                        <div class="active"><b>Controle Financeiro</b></div>
+                    </a>
+                    <ul class="nav">
+
+                        <li><a routerLink="#" class="active">Lançamentos</a></li>
+                    </ul>
+                    <a class='menu-trigger' (click)="showMenu()">
+                        <span>Menu</span>
+                        
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                    <ul class="navbar-nav" *ngIf="menuNav">
+                        <li class="nav-item">
+                            <a routerLink="#" class="active">Lançamentos</a>
+                        </li>
+                      </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+</header>
