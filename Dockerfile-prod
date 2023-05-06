@@ -1,6 +1,5 @@
 FROM nginx:latest 
 RUN rm /usr/share/nginx/html/index.html -f 
-COPY dist/controle-financeiro-front/ /usr/share/nginx/html/controle
-ENV TZ="America/Sao_Paulo"
+COPY dist/controle/ /usr/share/nginx/html/controle
 
 EXPOSE 80
