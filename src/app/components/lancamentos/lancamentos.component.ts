@@ -20,14 +20,13 @@ export class LancamentosComponent implements OnInit {
 
   valorGasto!: string;
 
-  lancamento: Lancamento;
+  lancamento: Lancamento = new Lancamento();
   preLoad: PreLoad = new PreLoad();
 
 
 
   constructor(private http: HttpService) {
     
-    this.lancamento = new Lancamento(); 
   }
 
   async ngOnInit(): Promise<void> {
@@ -45,17 +44,15 @@ export class LancamentosComponent implements OnInit {
     .subscribe();
   }
 
-   onSubmit() {
+   async onSubmit() {
     this.lancamento.valor = this.valorGasto;
     console.log(this.lancamento)
-    this.http.postLancamento(this.lancamento).subscribe(
-      success => {
-        console.log(success)
-      },
-      errors => {
-        console.log(errors)
-      }
-    )
+    try {
+      const success = await this.http.postLancamento(this.lancamento).toPromise();
+      console.log(success);
+    } catch (error) {
+      console.log(error);
+    }
 
   }
 

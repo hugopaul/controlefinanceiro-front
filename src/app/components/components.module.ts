@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './template/home/home.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { TipogastosComponent } from './tipogastos/tipogastos.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -14,12 +18,16 @@ import { AppRoutingModule } from '../app-routing.module';
     FooterComponent,
     NavbarComponent,
     LancamentosComponent,
-    HomeComponent
+    HomeComponent,
+    CategoriasComponent,
+    TipogastosComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AppRoutingModule,
+    OrderModule,
   ],
   exports:[
     FooterComponent,

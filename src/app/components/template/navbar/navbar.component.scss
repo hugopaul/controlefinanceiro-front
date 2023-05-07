@@ -10,3 +10,22 @@
         margin: 10px;
     }
 }
+
+
+@media (max-width: 991px){
+
+    ::ng-deep .header-area .main-nav .menu-trigger{
+
+        margin-top: 13px !important;
+        margin-right: 25px !important;
+        top: 0px !important;
+        width: 0px !important;
+    }
+    ::ng-deep .header-area .logo {
+        margin-top: 19px !important;
+    }
+    ::ng-deep .header-area .main-nav {
+        
+    min-height: 60px !important;
+    }
+}
