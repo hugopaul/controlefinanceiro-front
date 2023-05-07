@@ -1,0 +1,33 @@
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a routerLink="/home" class="logo">
+                        <b>Controle Financeiro</b>
+                    </a>
+                    <ul class="nav">
+
+                        <li><a routerLink="/lancamentos" class="active">Lançamentos</a></li>
+                        <li><a routerLink="/tipogastos" class="active">Tipo de Gastos</a></li>
+                        <li><a routerLink="/categorias" class="active">categorias</a></li>
+                        <li><a routerLink="/usuarios" class="active">Usuarios</a></li>
+                    </ul>
+                    <a class='menu-trigger' (click)="showMenu()">
+                        <span>Menu</span>
+
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                    <ul class="navbar-nav" *ngIf="menuNav">
+                        <li class="nav-item"><a routerLink="/lancamentos" class="active">Lançamentos</a></li>
+                        <li class="nav-item"><a routerLink="/tipogastos" class="active">Tipo de Gastos</a></li>
+                        <li class="nav-item"><a routerLink="/categorias" class="active">categorias</a></li>
+                        <li class="nav-item"><a routerLink="/usuarios" class="active">Usuarios</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+</header>

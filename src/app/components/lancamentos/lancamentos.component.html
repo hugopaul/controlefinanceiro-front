@@ -1,0 +1,129 @@
+<br>
+<br>
+<br>
+
+
+<div class="container mt-5" >
+    <h1 class="mt-4">Lançamentos de Gastos</h1>
+
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Informações</li>
+    </ol>
+    <div class="container">
+        <form #loginForm="ngForm" (submit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" *ngIf="msgSucesso == true">
+                        Colaborador salvo(a) com sucesso!
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert" *ngIf="msgfalha == true">
+                        Erro ao salvar o(a) colaborador!
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="small mb-1">Data e Hora:</label>
+                    <input type="datetime-local" class="form-control py-4" name="dataHora" [(ngModel)]="lancamento.dataHora" /><!--[(ngModel)]="user"-->
+                </div>
+                <div class="col-md-4">
+                    <label class="small mb-1">Descrição:</label>
+                    <input type="text" class="form-control py-4" name="descricao" autocomplete="off"
+                        placeholder="Descreva o Gasto" [(ngModel)]="lancamento.descricao" /><!--mask="(00) 0 0000-0000" [(ngModel)]="colaborador.telefone"-->
+                </div>
+                <div class="col-md-4">
+                    <label class="small mb-1">Valor Gasto:</label>
+                    <input type="text" class="form-control py-4" name="valorGasto" autocomplete="off"
+                        placeholder="Valor Gastado" (keyup)="onKeyUp($event)"
+                        [(ngModel)]="valorGasto" /><!--mask="(00) 0 0000-0000" [(ngModel)]="valorGasto"-->
+                </div>
+
+            </div>
+            <br>
+            <div class="row justify-content-between">
+                <div class="mr-5 ml-4">
+                    <label for="inlineCheckbox1">Despesa Fixa?</label><br>
+                    <input type="checkbox" id="inlineCheckbox1" [checked]="this.lancamento.despesaFixa">
+                </div>
+            
+                <div class="mr-5 ml-4">
+                    <label for="inlineCheckbox2">Parcelado?</label><br>
+                    <input type="checkbox" id="inlineCheckbox2" (click)="compraParcelada()" [checked]="this.lancamento.parcelado">
+                </div>
+                
+                <div class="col-md-4" *ngIf="this.lancamento.parcelado">
+                    <div class="form-group">
+                        <label> Dividido em: </label>
+                        <select class="form-control" name="qtdParcela" [(ngModel)]="lancamento.qtdParcela">
+                            <option value="1">Selecione ...</option>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="7">7x</option>
+                            <option value="8">8x</option>
+                            <option value="9">9x</option>
+                            <option value="10">10x</option>
+                            <option value="12">12x</option>
+                            <option value="24">24x</option>
+                            <option value="36">36x</option>
+                            <option value="48">48x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tipo de Gasto:</label>
+                        <select class="form-control" id="tipoGasto" [(ngModel)]="lancamento.tipoGasto.id" name="tipoGasto" required>
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let tipoGasto of preLoad.tipoGastos" [value]="tipoGasto.id">{{ tipoGasto.nome }}</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label> Categoria: </label>
+                        <select class="form-control" id="categoria" [(ngModel)]="lancamento.categoria.id" name="categoria" required>
+                            <option value="1">Selecione ...</option>
+                            <option *ngFor="let categoria of preLoad.categorias" [value]="categoria.id">{{categoria.nome}}</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label> Usuario: </label>
+                        <select class="form-control" id="usuario" [(ngModel)]="lancamento.usuario.id" name="usuario" required>
+                            <option value="1">Selecione ...</option>
+                            <option *ngFor="let usuario of preLoad.usuarios" [value]="usuario.id">{{usuario.nome}}</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group float-right mt-4 mt-0 ml-4">
+                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                </div>
+                <div class="form-group d-flex justity-content-between mt-4 mt-0 ml-4">
+                    <button class="btn btn-secondary" routerLink="/colaborador/list">Voltar</button>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <br>
+            <br>
+            <br>
+
+
+        </form>
+
+    </div>
+</div>
