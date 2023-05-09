@@ -26,31 +26,44 @@ export class LancamentosComponent implements OnInit {
 
 
   constructor(private http: HttpService) {
-    
+
   }
 
   async ngOnInit(): Promise<void> {
 
     await this.http.getPreLoad()
-    .pipe(
-      tap(success => {
-        this.preLoad = success;
-      }),
-      catchError(() => {
-        // Handle error here
-        return of(null);
-      })
-    )
-    .subscribe();
+      .pipe(
+        tap(success => {
+          this.preLoad = success;
+        }),
+        catchError(() => {
+          // Handle error here
+          return of(null);
+        })
+      )
+      .subscribe();
   }
 
-   async onSubmit() {
+  async onSubmit() {
+
+    const targetElement = document.getElementById('target-element');
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+
+      });
+    }
     this.lancamento.valor = this.valorGasto;
     console.log(this.lancamento)
     try {
       const success = await this.http.postLancamento(this.lancamento).toPromise();
+      this.msgSucesso = true;
       console.log(success);
+
     } catch (error) {
+      this.msgfalha = true;
       console.log(error);
     }
 
@@ -70,7 +83,7 @@ export class LancamentosComponent implements OnInit {
     return this.valorGasto;
   }
 
-  setTipoGasto(x:any){
+  setTipoGasto(x: any) {
     console.log(x)
   }
 }

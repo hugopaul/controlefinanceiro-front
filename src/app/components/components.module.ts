@@ -10,6 +10,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { TipogastosComponent } from './tipogastos/tipogastos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { LancamentosListComponent } from './lancamentos-list/lancamentos-list.component';
 
 
 
@@ -21,7 +22,8 @@ import { OrderModule } from 'ngx-order-pipe';
     HomeComponent,
     CategoriasComponent,
     TipogastosComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    LancamentosListComponent
   ],
   imports: [
     CommonModule,

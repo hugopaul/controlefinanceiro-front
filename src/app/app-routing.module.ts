@@ -5,6 +5,7 @@ import { HomeComponent } from './components/template/home/home.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { TipogastosComponent } from './components/tipogastos/tipogastos.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { LancamentosListComponent } from './components/lancamentos-list/lancamentos-list.component';
 
 
 const routes: Routes = [
@@ -12,8 +13,8 @@ const routes: Routes = [
   { path: 'lancamentos' , component: LancamentosComponent },
   { path: 'categorias' , component: CategoriasComponent },
   { path: 'tipogastos' , component: TipogastosComponent },
-  { path: 'usuarios' , component: UsuariosComponent }
-
+  { path: 'usuarios' , component: UsuariosComponent },
+  { path: 'lancamentos/list' , component: LancamentosListComponent },
 
 ];
 
