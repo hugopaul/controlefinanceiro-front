@@ -31,39 +31,41 @@
         <br>
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th (click)="sort('dataHora')">Data<span *ngIf="key =='dataHora'"> {{ reverse ?
-                                    '▲' : '▼' }} </span></th>
-                            <th (click)="sort('descricao')">Descrição<span *ngIf="key =='descricao'"> {{ reverse ?
-                                    '▲' : '▼' }} </span></th>
-                            <th (click)="sort('valor')">Valor<span *ngIf="key =='valor'"> {{
-                                    reverse ? '▲' : '▼' }} </span></th>
-                            <th (click)="sort('qtdParcela')">Parcelas<span *ngIf="key =='qtdParcela'"> {{
-                                    reverse ? '▲' : '▼' }} </span></th>
-                            <th (click)="sort('despesaFixa')">Fixo<span *ngIf="key =='despesaFixa'"> {{
-                                    reverse ? '▲' : '▼' }} </span></th>
-                            <th>Editar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let lancamento of lancamentos | orderBy: key : reverse; let i = index ">
-                            <td>{{ lancamento.dataHora | date : 'dd/MM HH:mm:ss'}}</td>
-                            <td>{{ lancamento.descricao}}</td>
-                            <td>{{ formataValor(lancamento.valor) }}</td>
-                            <td>{{ lancamento.qtdParcela}}</td>
-                            <td>{{ lancamento.despesaFixa ? 'Sim' : 'Não' }}</td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                    <i class="fa fa-trash"></i>
-                                </div>
-                            </td>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th (click)="sort('dataHora')">Data<span *ngIf="key =='dataHora'"> {{ reverse ?
+                                        '▲' : '▼' }} </span></th>
+                                <th (click)="sort('descricao')">Descrição<span *ngIf="key =='descricao'"> {{ reverse ?
+                                        '▲' : '▼' }} </span></th>
+                                <th (click)="sort('valor')">Valor<span *ngIf="key =='valor'"> {{
+                                        reverse ? '▲' : '▼' }} </span></th>
+                                <th (click)="sort('qtdParcela')">Parcelas<span *ngIf="key =='qtdParcela'"> {{
+                                        reverse ? '▲' : '▼' }} </span></th>
+                                <th (click)="sort('despesaFixa')">Fixo<span *ngIf="key =='despesaFixa'"> {{
+                                        reverse ? '▲' : '▼' }} </span></th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let lancamento of lancamentos | orderBy: key : reverse; let i = index ">
+                                <td>{{ lancamento.dataHora | date : 'dd/MM HH:mm:ss'}}</td>
+                                <td>{{ lancamento.descricao}}</td>
+                                <td>{{ formataValor(lancamento.valor) }}</td>
+                                <td>{{ lancamento.qtdParcela}}</td>
+                                <td>{{ lancamento.despesaFixa ? 'Sim' : 'Não' }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                        <i class="fa fa-trash"></i>
+                                    </div>
+                                </td>
 
-                        </tr>
+                            </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
