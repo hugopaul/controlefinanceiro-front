@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
-import { ClickOutsideDirective } from 'ng-click-outside';
 
 
 @Component({
