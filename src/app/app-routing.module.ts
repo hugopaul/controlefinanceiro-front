@@ -6,6 +6,7 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { TipogastosComponent } from './components/tipogastos/tipogastos.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { LancamentosListComponent } from './components/lancamentos-list/lancamentos-list.component';
+import { LoginComponent } from './login/login/login.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'tipogastos' , component: TipogastosComponent },
   { path: 'usuarios' , component: UsuariosComponent },
   { path: 'lancamentos/list' , component: LancamentosListComponent },
+  { path: 'login' , component: LoginComponent }
 
 ];
 

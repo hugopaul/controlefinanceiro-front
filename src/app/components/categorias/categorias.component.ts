@@ -3,7 +3,7 @@ import { catchError, of, tap } from 'rxjs';
 import { Categoria } from 'src/app/core/models/categoria.model';
 import { Lancamento } from 'src/app/core/models/lancamento.model';
 import { PreLoad } from 'src/app/core/models/pre-load.model';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 
 @Component({
   selector: 'app-categorias',

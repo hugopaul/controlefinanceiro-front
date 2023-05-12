@@ -1,13 +1,15 @@
 import { EnvironmentInjector, Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Lancamento } from "../models/lancamento.model";
+import { Lancamento } from "../../models/lancamento.model";
 import { Observable } from "rxjs";
 
 import { environment } from 'src/environments/environment';
-import { Categoria } from "../models/categoria.model";
-import { TipoGasto } from "../models/tipo-gasto.model";
-import { Usuario } from "../models/usuario.model";
-import { PreLoad } from "../models/pre-load.model";
+import { Categoria } from "../../models/categoria.model";
+import { TipoGasto } from "../../models/tipo-gasto.model";
+import { Usuario } from "../../models/usuario.model";
+import { PreLoad } from "../../models/pre-load.model";
+import { Login } from "../../models/login.model";
+import { Token } from "../../models/token.model";
 
 @Injectable({
     providedIn: 'root'
@@ -54,6 +56,10 @@ export class HttpService{
 
     getPreLoad(): Observable<PreLoad>{
         return this.http.get<PreLoad>(this.url + "/common")
+    }
+
+    postLogin(login:Login): Observable<Token>{
+        return this.http.post<Token>(this.url + "/auth/authenticate", login)
     }
 
 }

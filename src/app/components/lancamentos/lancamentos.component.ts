@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Lancamento } from 'src/app/core/models/lancamento.model';
 import { PreLoad } from 'src/app/core/models/pre-load.model';
 import { tap, catchError } from 'rxjs/operators'
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 import { of } from 'rxjs';
 import { Categoria } from 'src/app/core/models/categoria.model';
 import { TipoGasto } from 'src/app/core/models/tipo-gasto.model';
