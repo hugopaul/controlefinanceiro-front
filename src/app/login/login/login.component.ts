@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/core/services/http/http.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   
