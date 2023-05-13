@@ -20,6 +20,7 @@ export class TokenService {
     const token = localStorage.getItem("Jwt");
     if (token) {
       const expired = this.jwtHelper.isTokenExpired(token)
+      console.log("login expirado")
       return !expired
     }
     return false
