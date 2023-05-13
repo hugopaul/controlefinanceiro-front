@@ -11,13 +11,15 @@ import { GuardGuard } from './core/guard/guard.guard';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [GuardGuard] },
   { path: 'lancamentos', component: LancamentosComponent, canActivate: [GuardGuard] },
   { path: 'categorias', component: CategoriasComponent, canActivate: [GuardGuard] },
   { path: 'tipogastos', component: TipogastosComponent, canActivate: [GuardGuard] },
   { path: 'usuarios', component: UsuariosComponent, canActivate: [GuardGuard] },
   { path: 'lancamentos/list', component: LancamentosListComponent, canActivate: [GuardGuard] },
-  { path: 'login', component: LoginComponent, }
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: 'login' } // rota de fallback
 
 ];
 
