@@ -1,6 +1,6 @@
 {
   "name": "controle-financeiro-front",
-  "version": "0.0.8",
+  "version": "0.0.13",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

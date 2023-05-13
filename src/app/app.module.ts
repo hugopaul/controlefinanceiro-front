@@ -7,15 +7,17 @@ import { ComponentsModule } from './components/components.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login/login.component';
+import { Interceptor } from './core/interceptor';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
-
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

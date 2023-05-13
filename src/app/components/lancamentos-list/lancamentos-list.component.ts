@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 import { Lancamento } from 'src/app/core/models/lancamento.model';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 
 @Component({
   selector: 'app-lancamentos-list',

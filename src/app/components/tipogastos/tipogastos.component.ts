@@ -3,7 +3,7 @@ import { catchError, of, tap } from 'rxjs';
 import { Lancamento } from 'src/app/core/models/lancamento.model';
 import { PreLoad } from 'src/app/core/models/pre-load.model';
 import { TipoGasto } from 'src/app/core/models/tipo-gasto.model';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 
 @Component({
   selector: 'app-tipogastos',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 import { Usuario } from 'src/app/core/models/usuario.model';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -43,9 +43,10 @@ export class UsuariosComponent implements OnInit {
       if (success !== undefined) {
         this.usuarios.push(success);
       }
-      console.log(success);
+      this.msgSucesso = true;
+
     } catch (error) {
-      console.log(error);
+      this.msgfalha = true;
     }
   }
 
