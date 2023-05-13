@@ -7,16 +7,17 @@ import { TipogastosComponent } from './components/tipogastos/tipogastos.componen
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { LancamentosListComponent } from './components/lancamentos-list/lancamentos-list.component';
 import { LoginComponent } from './login/login/login.component';
+import { GuardGuard } from './core/guard/guard.guard';
 
 
 const routes: Routes = [
-  { path: 'home' , component: HomeComponent },
-  { path: 'lancamentos' , component: LancamentosComponent },
-  { path: 'categorias' , component: CategoriasComponent },
-  { path: 'tipogastos' , component: TipogastosComponent },
-  { path: 'usuarios' , component: UsuariosComponent },
-  { path: 'lancamentos/list' , component: LancamentosListComponent },
-  { path: 'login' , component: LoginComponent }
+  { path: 'home', component: HomeComponent, canActivate: [GuardGuard] },
+  { path: 'lancamentos', component: LancamentosComponent, canActivate: [GuardGuard] },
+  { path: 'categorias', component: CategoriasComponent, canActivate: [GuardGuard] },
+  { path: 'tipogastos', component: TipogastosComponent, canActivate: [GuardGuard] },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [GuardGuard] },
+  { path: 'lancamentos/list', component: LancamentosListComponent, canActivate: [GuardGuard] },
+  { path: 'login', component: LoginComponent, }
 
 ];
 

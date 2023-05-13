@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login/login.component';
-import { Interceptor } from './core/interceptor';
+import { Interceptor } from './core/interceptor/interceptor';
 
 
 
