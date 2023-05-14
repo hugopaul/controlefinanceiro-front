@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let lancamento of lancamentos | orderBy: key : reverse; let i = index ">
-                                <td>{{ lancamento.dataHora | date : 'dd/MM HH:mm:ss'}}</td>
+                                <td>{{ lancamento.dataHora | date : 'dd/MM HH:mm'}}</td>
                                 <td>{{ lancamento.descricao}}</td>
                                 <td>{{ formataValor(lancamento.valor) }}</td>
                                 <td>{{ lancamento.qtdParcela}}</td>

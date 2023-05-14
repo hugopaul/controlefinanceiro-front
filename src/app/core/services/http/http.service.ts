@@ -10,6 +10,7 @@ import { Usuario } from "../../models/usuario.model";
 import { PreLoad } from "../../models/pre-load.model";
 import { Login } from "../../models/login.model";
 import { Token } from "../../models/token.model";
+import { GastoPorDia } from "../../models/gasto-por-dia.model";
 
 @Injectable({
     providedIn: 'root'
@@ -60,6 +61,10 @@ export class HttpService{
 
     postLogin(login:Login): Observable<Token>{
         return this.http.post<Token>(this.url + "/auth/authenticate", login)
+    }
+    //CHARTS
+    getChartBuscarValorDiarioUltimos30(): Observable<GastoPorDia[]>{
+        return this.http.get<GastoPorDia[]>(this.url + "/charts/buscarValorDiarioUltimos30")
     }
 
 }

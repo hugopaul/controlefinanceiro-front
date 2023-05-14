@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './template/footer/footer.component';
 import { LancamentosComponent } from './lancamentos/lancamentos.component';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './template/home/home.component';
+import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { CategoriasComponent } from './categorias/categorias.component';
@@ -11,6 +11,7 @@ import { TipogastosComponent } from './tipogastos/tipogastos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { LancamentosListComponent } from './lancamentos-list/lancamentos-list.component';
+import { GraficosComponent } from './graficos/graficos.component';
 
 
 
@@ -23,7 +24,8 @@ import { LancamentosListComponent } from './lancamentos-list/lancamentos-list.co
     CategoriasComponent,
     TipogastosComponent,
     UsuariosComponent,
-    LancamentosListComponent
+    LancamentosListComponent,
+    GraficosComponent
   ],
   imports: [
     CommonModule,
