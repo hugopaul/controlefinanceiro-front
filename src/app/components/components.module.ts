@@ -12,6 +12,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { LancamentosListComponent } from './lancamentos-list/lancamentos-list.component';
 import { GraficosComponent } from './graficos/graficos.component';
+import { DiariosPorMesComponent } from './graficos/diarios-por-mes/diarios-por-mes.component';
+import { MensaisPorAnoComponent } from './graficos/mensais-por-ano/mensais-por-ano.component';
 
 
 
@@ -25,7 +27,9 @@ import { GraficosComponent } from './graficos/graficos.component';
     TipogastosComponent,
     UsuariosComponent,
     LancamentosListComponent,
-    GraficosComponent
+    GraficosComponent,
+    DiariosPorMesComponent,
+    MensaisPorAnoComponent
   ],
   imports: [
     CommonModule,

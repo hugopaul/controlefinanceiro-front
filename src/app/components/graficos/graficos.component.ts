@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { GastoPorDia } from 'src/app/core/models/gasto-por-dia.model';
+import { GastosCharts } from 'src/app/core/models/gastos-por-dia.model';
 import { HttpService } from 'src/app/core/services/http/http.service';
 Chart.register(...registerables);
 
@@ -11,67 +11,50 @@ Chart.register(...registerables);
 })
 export class GraficosComponent implements OnInit {
 
-  gastoPorDia: GastoPorDia[] = [];
-  valoresDiariosLabel: string[] = [];
-  valoresDiariosData: any[] = [];
-  valoresDiariosbackgroundColor: string[] = [];
-  valoresDiariosborderColor: string[] = [];
+  showCharts:boolean = false;
+  gastosPorDia: GastosCharts = new GastosCharts();
+  gastosPorMes: GastosCharts = new GastosCharts();
 
   constructor(private http: HttpService) {
 
   }
 
   async ngOnInit(): Promise<void> {
-    await this.popularGastoPorDia();
+    await this.popularGastosPorDia();
+    await this.popularGastosPorMes();
 
-    this.valoresDiariosChart();
+    this.showCharts = true;
   }
-  async popularGastoPorDia() {
+
+  async popularGastosPorDia() {
     try {
       const success = await this.http.getChartBuscarValorDiarioUltimos30().toPromise();
       if (success !== undefined) {
-        console.log(success)
-        this.gastoPorDia = success;
-        this.gastoPorDia.forEach(e => {
-          console.log(e)
-          this.valoresDiariosLabel.push(e.dia);
-          this.valoresDiariosData.push(e.totalGasto);
-          this.valoresDiariosbackgroundColor.push(this.randomColor())
-          this.valoresDiariosborderColor.push(this.randomColor())
+        success.forEach(e => {
+          this.gastosPorDia.valoresDiariosLabel.push(e.diaMesAno);
+          this.gastosPorDia.valoresDiariosData.push(e.totalGasto);
+          this.gastosPorDia.valoresDiariosbackgroundColor.push(this.randomColor())
+          this.gastosPorDia.valoresDiariosborderColor.push(this.randomColor())
         });
       }
     } catch (error) {
     }
-
-    
   }
-
-  valoresDiariosChart() {
-    console.log('valoresDiariosLabel -->', this.valoresDiariosLabel)
-    console.log('valoresDiariosData -->', this.valoresDiariosData)
-
-    var myChart = new Chart("myChart", {
-      type: 'bar',
-      data: {
-        labels: this.valoresDiariosLabel,
-        datasets: [{
-          label: 'Valores Diários (Últimos 30 dias)',
-          data: this.valoresDiariosData,
-          backgroundColor: this.valoresDiariosbackgroundColor,
-          borderColor: this.valoresDiariosborderColor,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+  async popularGastosPorMes() {
+    try {
+      const success = await this.http.getChartBuscarValorMensalUltimosAno().toPromise();
+      if (success !== undefined) {
+        console.log("success mensais --> " , success)
+        success.forEach(e => {
+          this.gastosPorMes.valoresDiariosLabel.push(e.diaMesAno);
+          this.gastosPorMes.valoresDiariosData.push(e.totalGasto);
+          this.gastosPorMes.valoresDiariosbackgroundColor.push(this.randomColor())
+          this.gastosPorMes.valoresDiariosborderColor.push(this.randomColor())
+        });
       }
-    });
+    } catch (error) {
+    }
   }
-
 
   randomColor(): string {
     const r = Math.floor(Math.random() * 256);

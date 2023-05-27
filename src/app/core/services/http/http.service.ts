@@ -10,7 +10,7 @@ import { Usuario } from "../../models/usuario.model";
 import { PreLoad } from "../../models/pre-load.model";
 import { Login } from "../../models/login.model";
 import { Token } from "../../models/token.model";
-import { GastoPorDia } from "../../models/gasto-por-dia.model";
+import { Gasto } from "../../models/gasto.model";
 
 @Injectable({
     providedIn: 'root'
@@ -39,6 +39,23 @@ export class HttpService{
         return this.http.post<Usuario>(this.url + "/usuarios", usuario)
     }
 
+    deleteLancamento(lancamento:Lancamento):Observable<boolean>{
+        return this.http.delete<boolean>(this.url + "/lancamentos", {body: lancamento})
+    }
+
+    deleteCategoria(categoria:Categoria): Observable<boolean>{
+        return this.http.delete<boolean>(this.url + "/categorias", {body: categoria})
+    }
+
+    deleteTipoGasto(tipoGasto:TipoGasto): Observable<boolean>{
+        return this.http.delete<boolean>(this.url + "/tipogastos", {body: tipoGasto})
+    }
+
+    deleteUsuario(usuario:Usuario): Observable<boolean>{
+        return this.http.delete<boolean>(this.url + "/usuarios", {body: usuario})
+    }
+
+
     getLancamentos(): Observable<Lancamento[]>{
         return this.http.get<Lancamento[]>(this.url + "/lancamentos")
     }
@@ -63,8 +80,11 @@ export class HttpService{
         return this.http.post<Token>(this.url + "/auth/authenticate", login)
     }
     //CHARTS
-    getChartBuscarValorDiarioUltimos30(): Observable<GastoPorDia[]>{
-        return this.http.get<GastoPorDia[]>(this.url + "/charts/buscarValorDiarioUltimos30")
+    getChartBuscarValorDiarioUltimos30(): Observable<Gasto[]>{
+        return this.http.get<Gasto[]>(this.url + "/charts/buscarValorDiarioUltimos30")
+    }
+    getChartBuscarValorMensalUltimosAno(): Observable<Gasto[]>{
+        return this.http.get<Gasto[]>(this.url + "/charts/buscarValorTotalUltimosMeses")
     }
 
 }

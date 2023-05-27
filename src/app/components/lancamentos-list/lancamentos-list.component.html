@@ -12,12 +12,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="msgSucesso == true">
-                    Lançamento salvo(a) com sucesso!
+                    Lançamento deletado(a) com sucesso!
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="alert alert-danger" role="alert" *ngIf="msgfalha == true">
-                    Erro ao salvar o(a) Lançamento!
+                    Erro ao deletar o(a) Lançamento!
                 </div>
             </div>
         </div>
@@ -58,14 +58,34 @@
                                 <td>{{ lancamento.despesaFixa ? 'Sim' : 'Não' }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                        <i class="fa fa-trash"></i>
+                                        <button class="btn btn-secondary" (click)="preparaDelecao(lancamento)"
+                                            data-toggle="modal" data-target="#modalDelecao"><i
+                                                class="fa fa-trash"></i></button>
                                     </div>
+
                                 </td>
 
                             </tr>
 
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div id="modalDelecao" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Confirmação</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Deseja deletar o Lançamento?</h6> <br>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" (click)="deletarLancameto(lancamentoSelecionado)"
+                                data-dismiss="modal">Confirmar</button>
+                            <button class="btn btn-primary ml-1" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

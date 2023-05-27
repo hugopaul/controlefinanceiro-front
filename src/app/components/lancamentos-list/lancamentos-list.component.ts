@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, of, pipe, tap } from 'rxjs';
 import { Lancamento } from 'src/app/core/models/lancamento.model';
 import { HttpService } from 'src/app/core/services/http/http.service';
 
@@ -11,6 +11,8 @@ import { HttpService } from 'src/app/core/services/http/http.service';
 export class LancamentosListComponent implements OnInit{
   msgSucesso!: boolean;
   msgfalha!: boolean;
+
+  lancamentoSelecionado!: Lancamento;
 
   maskMoney = ({
     prefix: 'R$ ',
@@ -59,5 +61,29 @@ export class LancamentosListComponent implements OnInit{
   
     // Retorna o valor formatado em reais
     return `R$ ${parteInteiraFormatada},${parteDecimal}`;
+  }
+
+  preparaDelecao(lancamento: Lancamento){
+    this.lancamentoSelecionado = lancamento
+  }
+  async deletarLancameto(lancamento: Lancamento){
+    await this.http.deleteLancamento(lancamento)
+    .pipe(
+      tap(success => {
+        if(success){
+          this.msgSucesso = success
+          // remover dos lancamentos o lancamento deletado
+          this.lancamentos = this.lancamentos.filter(e => e !== lancamento);
+        this.msgfalha =false;
+        }
+        
+      }),
+      catchError(() => {
+        this.msgSucesso = false;
+        this.msgfalha = true;
+        return of(null);
+      })
+    )
+    .subscribe();
   }
 }

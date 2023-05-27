@@ -7,7 +7,11 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Informações</li>
     </ol>
-    <div id="divChart">
-        <canvas id="myChart"></canvas>
+
+
+    <div id="divChart" *ngIf="showCharts">
+        <app-diarios-por-mes [gastosPorDia]="gastosPorDia" ></app-diarios-por-mes>
+        <app-mensais-por-ano [gastosPorMes]="gastosPorMes" ></app-mensais-por-ano>
     </div>
+    
 </div>
