@@ -86,5 +86,10 @@ export class HttpService{
     getChartBuscarValorMensalUltimosAno(): Observable<Gasto[]>{
         return this.http.get<Gasto[]>(this.url + "/charts/buscarValorTotalUltimosMeses")
     }
-
+    getChartBuscarMediaDiariaUltimos30Dias():Observable<Gasto>{
+        return this.http.get<Gasto>(this.url + "/charts/buscarMediaDiariaUltimos30Dias")
+    }
+    getChartBuscarMediaMensalUltimos12Meses():Observable<Gasto>{
+        return this.http.get<Gasto>(this.url + "/charts/buscarMediaMensalUltimosMeses")
+    }
 }

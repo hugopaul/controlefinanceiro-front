@@ -17,6 +17,8 @@ export class UsuariosComponent implements OnInit {
 
   usuarios:Usuario[] = [];
 
+  usuarioSelecionado:Usuario = new Usuario;
+
 
 
   constructor(private http: HttpService) {
@@ -57,5 +59,27 @@ export class UsuariosComponent implements OnInit {
      this.key = key;
      this.reverse = !this.reverse;
    }
-
+   preparaDelecao(usuario: Usuario){
+    this.usuarioSelecionado = usuario
+  }
+  async deletarUsuario(usuario: Usuario){
+    await this.http.deleteUsuario(usuario)
+    .pipe(
+      tap(success => {
+        if(success){
+          this.msgSucesso = success
+          // remover dos lancamentos o lancamento deletado
+          this.usuarios = this.usuarios.filter(e => e !== usuario);
+        this.msgfalha =false;
+        }
+        
+      }),
+      catchError(() => {
+        this.msgSucesso = false;
+        this.msgfalha = true;
+        return of(null);
+      })
+    )
+    .subscribe();
+  }
 }

@@ -19,6 +19,7 @@ export class LancamentosComponent implements OnInit {
   msgfalha!: boolean;
 
   valorGasto!: string;
+  valorDaParcela!:string;
 
   lancamento: Lancamento = new Lancamento();
   preLoad: PreLoad = new PreLoad();
@@ -56,6 +57,7 @@ export class LancamentosComponent implements OnInit {
       });
     }
     this.lancamento.valor = this.valorGasto;
+    this.lancamento.valorParcela = this.valorDaParcela;
     console.log(this.lancamento)
     try {
       const success = await this.http.postLancamento(this.lancamento).toPromise();
@@ -73,7 +75,7 @@ export class LancamentosComponent implements OnInit {
     this.lancamento.parcelado = !this.lancamento.parcelado;
   }
 
-  onKeyUp(x: any) {
+  onKeyUpValorGasto(x: any) {
     this.valorGasto = this.valorGasto + '';
     this.valorGasto = this.valorGasto.replace(/\D+/g, '');
     this.valorGasto = this.valorGasto.replace(/([0-9]{2})$/g, ",$1");
@@ -81,6 +83,15 @@ export class LancamentosComponent implements OnInit {
       this.valorGasto = this.valorGasto.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
     }
     return this.valorGasto;
+  }
+  onKeyUpValorDaParcela(x: any) {
+    this.valorDaParcela = this.valorDaParcela + '';
+    this.valorDaParcela = this.valorDaParcela.replace(/\D+/g, '');
+    this.valorDaParcela = this.valorDaParcela.replace(/([0-9]{2})$/g, ",$1");
+    if (this.valorDaParcela.length > 6) {
+      this.valorDaParcela = this.valorDaParcela.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+    return this.valorDaParcela;
   }
 
   setTipoGasto(x: any) {

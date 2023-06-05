@@ -10,16 +10,16 @@
         <li class="breadcrumb-item active">Informações</li>
     </ol>
     <div class="container">
-        <form #loginForm="ngForm" (submit)="onSubmit()">
+        <form #loginForm="ngForm" >
             <div class="row">
                 <div class="col-md-12">
-                    <div class="alert alert-success" role="alert" *ngIf="msgSucesso == true">
-                        Colaborador salvo(a) com sucesso!
+                    <div class="alert alert-success" role="alert" *ngIf="alertSucesso == true">
+                        {{ msgSucesso }} 
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="alert alert-danger" role="alert" *ngIf="msgfalha == true">
-                        Erro ao salvar o(a) colaborador!
+                    <div class="alert alert-danger" role="alert" *ngIf="alertFalha == true">
+                        {{ msgFalha }}
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="form-group float-right mt-4 mt-0 ml-4">
-                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                    <button class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
                 </div>
                 <div class="form-group d-flex justity-content-between mt-4 mt-0 ml-4">
                     <button class="btn btn-secondary" routerLink="/home">Voltar</button>
@@ -74,14 +74,35 @@
                                     <td>{{ cate.dataAtualizacao | date : 'dd/MM/yyyy' }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                            <i class="fa fa-trash"></i>
+                                            <button class="btn btn-secondary" (click)="preparaDelecao(cate)"
+                                                data-toggle="modal" data-target="#modalDelecao"><i
+                                                    class="fa fa-trash"></i></button>
                                         </div>
+    
                                     </td>
+    
 
                                 </tr>
 
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div id="modalDelecao" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Confirmação</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Deseja deletar o Categoria?</h6> <br>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-danger" (click)="deletarCategoria(categoriaSelecionado)"
+                                    data-dismiss="modal">Confirmar</button>
+                                <button class="btn btn-primary ml-1" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

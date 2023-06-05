@@ -19,6 +19,8 @@ export class TipogastosComponent implements OnInit {
 
   tipoGastos:TipoGasto[] = [];
 
+  
+  tipoGastoSelecionado:TipoGasto = new TipoGasto();
 
 
   constructor(private http: HttpService) {
@@ -59,5 +61,27 @@ export class TipogastosComponent implements OnInit {
      this.key = key;
      this.reverse = !this.reverse;
    }
-
+   preparaDelecao(tipoGasto: TipoGasto){
+    this.tipoGastoSelecionado = tipoGasto
+  }
+  async deletarTipoGasto(tipoGasto: TipoGasto){
+    await this.http.deleteTipoGasto(tipoGasto)
+    .pipe(
+      tap(success => {
+        if(success){
+          this.msgSucesso = success
+          // remover dos lancamentos o lancamento deletado
+          this.tipoGastos = this.tipoGastos.filter(e => e !== tipoGasto);
+        this.msgfalha =false;
+        }
+        
+      }),
+      catchError(() => {
+        this.msgSucesso = false;
+        this.msgfalha = true;
+        return of(null);
+      })
+    )
+    .subscribe();
+  }
 }

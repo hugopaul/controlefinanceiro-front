@@ -37,7 +37,7 @@
                 <div class="col-md-4">
                     <label class="small mb-1">Valor Gasto:</label>
                     <input type="text" class="form-control py-4" name="valorGasto" autocomplete="off"
-                        placeholder="Valor Gastado" (keyup)="onKeyUp($event)"
+                        placeholder="Valor Gastado" (keyup)="onKeyUpValorGasto($event)"
                         [(ngModel)]="valorGasto" /><!--mask="(00) 0 0000-0000" [(ngModel)]="valorGasto"-->
                 </div>
 
@@ -75,6 +75,12 @@
                             <option value="48">48x</option>
                         </select>
                     </div>
+                </div>
+                <div class="col-md-4" *ngIf="this.lancamento.parcelado">
+                    <label class="small mb-1">Valor da Parcela:</label>
+                    <input type="text" class="form-control py-4" name="valorDaParcela" autocomplete="off"
+                        placeholder="Valor da Parcela" (keyup)="onKeyUpValorDaParcela($event)"
+                        [(ngModel)]="valorDaParcela" /><!--mask="(00) 0 0000-0000" [(ngModel)]="valorGasto"-->
                 </div>
             </div>
             <br>

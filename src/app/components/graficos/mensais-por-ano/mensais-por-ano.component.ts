@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Gasto } from 'src/app/core/models/gasto.model';
 import { GastosCharts } from 'src/app/core/models/gastos-por-dia.model';
 
 @Component({
@@ -11,6 +12,9 @@ export class MensaisPorAnoComponent implements AfterViewInit {
 
   @Input()
   public gastosPorMes: GastosCharts = new GastosCharts();
+
+  @Input()
+  public mediaDeGastosMensais: Gasto = new Gasto();
 
 
   ngAfterViewInit(){
@@ -27,7 +31,7 @@ export class MensaisPorAnoComponent implements AfterViewInit {
       data: {
         labels: this.gastosPorMes.valoresDiariosLabel,
         datasets: [{
-          label: 'Valores Mensais (Últimos 12 meses)',
+          label: `${this.mediaDeGastosMensais.diaMesAno} : ${this.mediaDeGastosMensais.totalGasto}`,
           data: this.gastosPorMes.valoresDiariosData,
           backgroundColor: this.gastosPorMes.valoresDiariosbackgroundColor,
           borderColor: this.gastosPorMes.valoresDiariosborderColor,
