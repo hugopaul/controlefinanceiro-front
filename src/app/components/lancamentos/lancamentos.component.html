@@ -46,13 +46,12 @@
             <div class="row justify-content-between">
                 <div class="mr-5 ml-4">
                     <label for="inlineCheckbox1">Despesa Fixa?</label><br>
-                    <input type="checkbox" id="inlineCheckbox1" [checked]="this.lancamento.despesaFixa">
+                    <input type="checkbox" id="inlineCheckbox1" (click)="despesaFixa()">
                 </div>
 
                 <div class="mr-5 ml-4">
                     <label for="inlineCheckbox2">Parcelado?</label><br>
-                    <input type="checkbox" id="inlineCheckbox2" (click)="compraParcelada()"
-                        [checked]="this.lancamento.parcelado">
+                    <input type="checkbox" id="inlineCheckbox2" (click)="compraParcelada()">
                 </div>
 
                 <div class="col-md-4" *ngIf="this.lancamento.parcelado">
@@ -79,7 +78,7 @@
                 <div class="col-md-4" *ngIf="this.lancamento.parcelado">
                     <label class="small mb-1">Valor da Parcela:</label>
                     <input type="text" class="form-control py-4" name="valorDaParcela" autocomplete="off"
-                        placeholder="Valor da Parcela" (keyup)="onKeyUpValorDaParcela($event)"
+                        placeholder="Valor Gastado" (keyup)="onKeyUpValorDaParcela($event)"
                         [(ngModel)]="valorDaParcela" /><!--mask="(00) 0 0000-0000" [(ngModel)]="valorGasto"-->
                 </div>
             </div>

@@ -58,6 +58,7 @@ export class LancamentosComponent implements OnInit {
     }
     this.lancamento.valor = this.valorGasto;
     this.lancamento.valorParcela = this.valorDaParcela;
+    
     console.log(this.lancamento)
     try {
       const success = await this.http.postLancamento(this.lancamento).toPromise();
@@ -73,6 +74,9 @@ export class LancamentosComponent implements OnInit {
 
   compraParcelada() {
     this.lancamento.parcelado = !this.lancamento.parcelado;
+  }
+  despesaFixa(){
+    this.lancamento.despesaFixa = !this.lancamento.despesaFixa;
   }
 
   onKeyUpValorGasto(x: any) {

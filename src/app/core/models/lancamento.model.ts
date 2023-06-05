@@ -12,8 +12,8 @@ export class Lancamento {
     dataHora!: string;
     dataCriacao!: string;
     dataAtualizacao!: string;
-    parcelado!: boolean;
+    parcelado: boolean = false;
     qtdParcela!:number;
     valorParcela!:string;
-    despesaFixa!: boolean;
+    despesaFixa: boolean = false;
 }
