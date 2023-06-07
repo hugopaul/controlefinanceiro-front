@@ -11,6 +11,7 @@ import { PreLoad } from "../../models/pre-load.model";
 import { Login } from "../../models/login.model";
 import { Token } from "../../models/token.model";
 import { Gasto } from "../../models/gasto.model";
+import { Emprestimo } from "../../models/emprestimo.model";
 
 @Injectable({
     providedIn: 'root'
@@ -38,6 +39,9 @@ export class HttpService{
     postUsuario(usuario:Usuario): Observable<Usuario>{
         return this.http.post<Usuario>(this.url + "/usuarios", usuario)
     }
+    postEmprestimo(emprestimo:Emprestimo): Observable<Emprestimo>{
+        return this.http.post<Emprestimo>(this.url + "/emprestimos", emprestimo)
+    }
 
     deleteLancamento(lancamento:Lancamento):Observable<boolean>{
         return this.http.delete<boolean>(this.url + "/lancamentos", {body: lancamento})
@@ -53,6 +57,10 @@ export class HttpService{
 
     deleteUsuario(usuario:Usuario): Observable<boolean>{
         return this.http.delete<boolean>(this.url + "/usuarios", {body: usuario})
+    }
+
+    deleteEmprestimo(emprestimo:Emprestimo): Observable<boolean>{
+        return this.http.delete<boolean>(this.url + "/emprestimos", {body: emprestimo})
     }
 
 
@@ -74,6 +82,10 @@ export class HttpService{
 
     getPreLoad(): Observable<PreLoad>{
         return this.http.get<PreLoad>(this.url + "/common")
+    }
+
+    getEmprestimos(): Observable<Emprestimo[]>{
+        return this.http.get<Emprestimo[]>(this.url + "/emprestimos")
     }
 
     postLogin(login:Login): Observable<Token>{
