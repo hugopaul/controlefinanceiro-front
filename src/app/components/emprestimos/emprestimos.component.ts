@@ -76,7 +76,7 @@ export class EmprestimosComponent implements OnInit{
       tap(success => {
         if(success){
           this.alertSucesso = success
-          this.msgSucesso = "Categoria deletado(a) com sucesso!"
+          this.msgSucesso = "Emprestimo deletado(a) com sucesso!"
           // remover dos lancamentos o lancamento deletado
           this.emprestimos = this.emprestimos.filter(e => e !== emprestimo);
         this.alertFalha =false;
