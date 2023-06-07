@@ -33,7 +33,7 @@
                 <div class="col-md-4">
                     <label class="small mb-1">Descrição:</label>
                     <input type="text" class="form-control py-4" name="descricao" autocomplete="off"
-                        placeholder="Descreção do Emprestimo" [(ngModel)]="emprestimo.descricao" />
+                        placeholder="Descrição do Emprestimo" [(ngModel)]="emprestimo.descricao" />
                 </div>
             </div>
             <div class="row">
@@ -72,7 +72,7 @@
                                     <th (click)="sort('descricao')">Descrição<span *ngIf="key =='descricao'"> {{ reverse
                                             ?
                                             '▲' : '▼' }} </span></th>
-                                    <th (click)="sort('dataCriacao')">Data de criacao<span *ngIf="key =='dataCriacao'">
+                                    <th (click)="sort('dataCriacao')">Data<span *ngIf="key =='dataCriacao'">
                                             {{
                                             reverse ? '▲' : '▼' }} </span></th>
                                     <th (click)="sort('valor')">Valor<span
