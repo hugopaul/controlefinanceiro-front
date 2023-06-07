@@ -14,6 +14,7 @@ import { LancamentosListComponent } from './lancamentos-list/lancamentos-list.co
 import { GraficosComponent } from './graficos/graficos.component';
 import { DiariosPorMesComponent } from './graficos/diarios-por-mes/diarios-por-mes.component';
 import { MensaisPorAnoComponent } from './graficos/mensais-por-ano/mensais-por-ano.component';
+import { EmprestimosComponent } from './emprestimos/emprestimos.component';
 
 
 
@@ -29,7 +30,8 @@ import { MensaisPorAnoComponent } from './graficos/mensais-por-ano/mensais-por-a
     LancamentosListComponent,
     GraficosComponent,
     DiariosPorMesComponent,
-    MensaisPorAnoComponent
+    MensaisPorAnoComponent,
+    EmprestimosComponent
   ],
   imports: [
     CommonModule,
